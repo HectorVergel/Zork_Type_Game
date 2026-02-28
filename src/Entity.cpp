@@ -1,7 +1,7 @@
 #include "Entity.h"
 #include "Utils.h"
 
-Entity::Entity(const std::string aName, const std::string aDescription, Entity* aParent) : 
+Entity::Entity(const std::string& aName, const std::string& aDescription, Entity* aParent) :
 	mName(aName),
 	mDescription(aDescription),
 	mParent(aParent)
@@ -17,4 +17,14 @@ Entity::Entity(const std::string aName, const std::string aDescription, Entity* 
 Entity::~Entity()
 {
 	SAFE_DELETE_VECTOR(mContains);
+}
+
+const std::string Entity::GetName()
+{
+	return mName;
+}
+
+const EntityType Entity::GetType()
+{
+	return mType;
 }
