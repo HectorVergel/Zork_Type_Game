@@ -14,10 +14,6 @@ Room::~Room()
 	SAFE_DELETE_VECTOR(mExits);
 }
 
-void Room::Update()
-{
-}
-
 void Room::Describe() const
 {
 	std::cout << mName << std::endl;

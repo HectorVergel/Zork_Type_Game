@@ -1,18 +1,19 @@
 #include <iostream>
 #include "Player.h"
 #include "Exit.h"
+#include "NPC.h"
 
-bool Player::HasKey(const std::list<Entity*>& aContainer)
+bool Player::HasItem(const std::list<Entity*>& aContainer, const std::string& aItem)
 {
-	for(const auto& Object : aContainer)
+	for (const auto& Object : aContainer)
 	{
-		if(Object->IsStorage())
+		if (Object->IsStorage())
 		{
-			return HasKey(Object->GetContains());
+			return HasItem(Object->GetContains(), aItem);
 		}
 		else
 		{
-			if (Object->GetName() == "Key")
+			if (Object->GetName().compare(aItem) == 0)
 			{
 				return true;
 			}
@@ -23,10 +24,6 @@ bool Player::HasKey(const std::list<Entity*>& aContainer)
 
 Player::Player(const std::string& aName, const std::string& aDescription, Room* aStartingRoom) :
 	Entity(aName, aDescription, aStartingRoom)
-{
-}
-
-void Player::Update()
 {
 }
 
@@ -75,7 +72,7 @@ void Player::Move(std::string& aDirection)
 		return;
 	}
 
-	if (Exit->GetDestination()->GetIsLocked() && !HasKey(mContains))
+	if (Exit->GetDestination()->GetIsLocked() && !HasItem(mContains, "Key"))
 	{
 		std::cout << "You can't go that way, it's locked. Find a key." << std::endl;
 		return;
@@ -142,6 +139,26 @@ void Player::Store(std::string& aItemToStore, std::string& aItemStorage)
 		std::cout << "You stored don't have enough space in " << ItemStorage->GetName() << std::endl;
 	}
 	
+}
+
+void Player::Talk(std::string& aName)
+{
+	Room* CurrentRoom = GetCurrentRoom();
+
+	if(CurrentRoom == nullptr)
+	{
+		return;
+	}
+
+	NPC* CharacterNPC = static_cast<NPC*>(CurrentRoom->Find(aName));
+
+	if(CharacterNPC == nullptr)
+	{
+		std::cout << "There is no one in here with that name" << std::endl;
+		return;
+	}
+
+	CharacterNPC->Dialog(HasItem(mContains, CharacterNPC->GetQuestItem()));
 }
 
 Room* Player::GetCurrentRoom() const

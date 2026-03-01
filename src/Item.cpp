@@ -12,10 +12,6 @@ Item::~Item()
 {
 }
 
-void Item::Update()
-{
-}
-
 void Item::Describe() const
 {
 	std::cout << "Item: " << mName << std::endl;

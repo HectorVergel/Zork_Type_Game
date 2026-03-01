@@ -9,7 +9,6 @@ public:
 	Item(const std::string& aName, const std::string& aDescription, Entity* aParent = nullptr, const int aStorageSlots = 0);
 	~Item() override;
 
-	void Update() override;
 	void Describe() const override;
 	bool IsStorage() const override;
 	bool Add(Entity* aEntity) override;

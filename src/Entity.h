@@ -9,7 +9,6 @@ class Entity
 public:
 	Entity(const std::string& aName, const std::string& aDescription, Entity* aParent);
 	virtual ~Entity();
-	virtual void Update() = 0;
 	virtual void Describe() const;
 	virtual bool IsStorage() const;
 

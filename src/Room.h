@@ -12,7 +12,6 @@ public:
 	Room(const std::string& aName, const std::string& aDescription, const bool aLocked);
 	~Room() override;
 
-	void Update() override;
 	void Describe() const override;
 
 	void Look();

@@ -5,16 +5,13 @@
 #include "Entity.h"
 #include "Room.h"
 #include "Item.h"
+#include "NPC.h"
 
 class Player : public Entity
 {
-private:
-	bool HasKey(const std::list<Entity*>& aContainer);
-
 public:
 	Player(const std::string& aName, const std::string& aDescription, Room* aStartingRoom);
 
-	void Update() override;
 	void Describe() const override;
 
 	void Look();
@@ -22,8 +19,13 @@ public:
 	void Move(std::string& aDirection);
 	void Take(std::string& aItemName);
 	void Store(std::string& aItemToStore, std::string& aItemStorage);
+	void Talk(std::string& aName);
 
 	Room* GetCurrentRoom() const;
+
+private:
+	bool HasItem(const std::list<Entity*>& aContainer, const std::string& aItem);
+
 };
 
 #endif

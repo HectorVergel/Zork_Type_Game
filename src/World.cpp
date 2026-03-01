@@ -55,10 +55,15 @@ void World::CreateWorld()
 	// -- ITEMS --
 
 	Item* Key = new Item("Key", "It might open a closed door.", HidedRoom);
-	Item* Bagpack = new Item("Bagpack", "You can use it to store other items", Tent, 4);
+	Item* Bagpack = new Item("Bagpack", "You can use it to store other items.", Tent, 4);
+	Item* Amulet = new Item("Amulet", "A pendant with a charming rock.", Bedroom);
 
 	// -- PLAYER --
 
 	mPlayer = new Player("Hector", "A brave adventurer", Forest);
+
+	// -- NPCs --
+
+	NPC* LostTraveler = new NPC("Traveler", "An old man dressed up with mountain clothes", Forest, Amulet);
 
 }

@@ -30,7 +30,6 @@ void Game::Run()
 		std::getline(std::cin, Input);
 
 		ProcessCommand(Input);
-        mWorld->GetPlayer()->Update();
 	}
 }
 
@@ -90,6 +89,13 @@ void Game::ProcessCommand(const std::string& aInput)
         {
             mWorld->GetPlayer()->Store(ItemName, ContainerName);
         }
+    }
+    else if (Command == "talk")
+    {
+        std::string NPCName;
+        Iss >> NPCName;
+
+        mWorld->GetPlayer()->Talk(NPCName);
     }
     else if (Command == "help")
     {
