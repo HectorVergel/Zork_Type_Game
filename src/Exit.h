@@ -5,7 +5,7 @@
 
 enum Direction 
 {
-	NORD,
+	NORTH,
 	SOUTH,
 	WEST,
 	EAST
@@ -14,11 +14,12 @@ enum Direction
 class Exit 
 {
 public:
-	Exit(const Direction& aDirection, Room* aDestination);
+	Exit(const Direction& aDirection, Room* aOrigin, Room* aDestination);
 	Room* GetDestination() const;
 	std::string GetDirectionAsString() const;
 
 private:
+	Room* mOrigin;
 	Room* mDestination;
 	Direction mDirection;
 };

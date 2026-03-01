@@ -51,6 +51,18 @@ void Entity::Remove(Entity* aEntity)
 	}
 }
 
+Entity* Entity::Find(const std::string& aEntityName)
+{
+	for(const auto Entity : mContains)
+	{
+		if(Entity->GetName().compare(aEntityName) == 0)
+		{
+			return Entity;
+		}
+	}
+	return nullptr;
+}
+
 void Entity::SetParent(Entity* aParent)
 {
 	mParent = aParent;

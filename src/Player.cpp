@@ -24,6 +24,18 @@ void Player::Look()
 
 void Player::Drop(std::string& aItemName)
 {
+	Entity* Item = Find(aItemName);
+
+	if(Item == nullptr)
+	{
+		std::cout << "You don't have that" << std::endl;
+		return;
+	}
+
+	Remove(Item);
+	GetCurrentRoom()->Add(Item);
+
+	std::cout << "You dropped " << Item->GetName() << std::endl;
 }
 
 void Player::Move(std::string& aDirection)
@@ -50,12 +62,29 @@ void Player::Move(std::string& aDirection)
 		return;
 	}
 
+	CurrentRoom->Remove(this);
+	Destination->Add(this);
+
 	std::cout << "You move to " << Destination->GetName() << std::endl;
 	Destination->Look();
 }
 
 void Player::Take(std::string& aItemName)
 {
+	Room* Room = GetCurrentRoom();
+
+	Entity* Item = Room->Find(aItemName);
+
+	if(Item == nullptr)
+	{
+		std::cout << "That item is not here" << std::endl;
+		return;
+	}
+
+	Room->Remove(Item);
+	Add(Item);
+
+	std::cout << "You picked up " << Item->GetName() << std::endl;
 }
 
 Room* Player::GetCurrentRoom() const

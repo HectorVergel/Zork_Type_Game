@@ -15,6 +15,7 @@ public:
 	const std::string GetName();
 	void Add(Entity* aEntity);
 	void Remove(Entity* aEntity);
+	Entity* Find(const std::string& aEntityName);
 	void SetParent(Entity* aParent);
 	Entity* GetParent();
 

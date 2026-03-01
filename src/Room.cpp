@@ -1,10 +1,16 @@
-#include "Room.h"
 #include <iostream>
+#include "Room.h"
+#include "Utils.h"
 
 Room::Room(const std::string& aName, const std::string& aDescription, const bool aLocked) : 
 	Entity(aName, aDescription, nullptr),
 	mLocked(aLocked)
 {
+}
+
+Room::~Room()
+{
+	SAFE_DELETE_VECTOR(mExits);
 }
 
 void Room::Update()

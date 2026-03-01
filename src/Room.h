@@ -9,7 +9,7 @@ class Room : public Entity
 {
 public:
 	Room(const std::string& aName, const std::string& aDescription, const bool aLocked);
-	~Room() override = default;
+	~Room() override;
 
 	void Update() override;
 	void Describe() const override;

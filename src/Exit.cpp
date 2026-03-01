@@ -1,9 +1,11 @@
 #include "Exit.h"
 
-Exit::Exit(const Direction& aDirection, Room* aDestination) :
+Exit::Exit(const Direction& aDirection,  Room* aOrigin, Room* aDestination) :
+	mOrigin(aOrigin),
 	mDestination(aDestination),
 	mDirection(aDirection)
 {
+	mOrigin->AddExit(this);
 }
 
 Room* Exit::GetDestination() const
@@ -17,7 +19,7 @@ std::string Exit::GetDirectionAsString() const
 
 	switch (mDirection)
 	{
-	case NORD:
+	case NORTH:
 		Direction = "North";
 		break;
 
