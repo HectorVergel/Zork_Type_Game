@@ -9,7 +9,7 @@
 class Player : public Entity
 {
 private:
-	bool HasKey();
+	bool HasKey(const std::list<Entity*>& aContainer);
 
 public:
 	Player(const std::string& aName, const std::string& aDescription, Room* aStartingRoom);
@@ -21,6 +21,7 @@ public:
 	void Drop(std::string& aItemName);
 	void Move(std::string& aDirection);
 	void Take(std::string& aItemName);
+	void Store(std::string& aItemToStore, std::string& aItemStorage);
 
 	Room* GetCurrentRoom() const;
 };

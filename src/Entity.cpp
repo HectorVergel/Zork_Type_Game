@@ -22,33 +22,41 @@ void Entity::Describe() const
 {
 }
 
+bool Entity::IsStorage() const
+{
+	return false;
+}
+
 std::string Entity::GetName() const
 {
 	return mName;
 }
 
-void Entity::Add(Entity* aEntity)
+bool Entity::Add(Entity* aEntity)
 {
 	if(aEntity == nullptr)
 	{
-		return;
+		return false;
 	}
 	mContains.push_back(aEntity);
 	aEntity->SetParent(this);
+	return true;
 }
 
-void Entity::Remove(Entity* aEntity)
+bool Entity::Remove(Entity* aEntity)
 {
 	if(aEntity == nullptr)
 	{
-		return;
+		return false;
 	}
 	auto Iterator = std::find(mContains.begin(), mContains.end(), aEntity);
 	if(Iterator != mContains.end())
 	{
 		mContains.erase(Iterator);
 		aEntity->SetParent(nullptr);
+		return true;
 	}
+	return false;
 }
 
 Entity* Entity::Find(const std::string& aEntityName)
@@ -71,4 +79,9 @@ void Entity::SetParent(Entity* aParent)
 Entity* Entity::GetParent()
 {
 	return mParent;
+}
+
+std::list<Entity*> Entity::GetContains()
+{
+	return mContains;
 }

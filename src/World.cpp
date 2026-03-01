@@ -50,10 +50,12 @@ void World::CreateWorld()
 	Exit* CaveToBedroom = new Exit(SOUTH, Cave, Bedroom);
 	Exit* CaveToForest = new Exit(WEST, Cave, Forest);
 	Exit* HidedRoomToCave = new Exit(WEST, HidedRoom, Cave);
+	Exit* BedroomToCave = new Exit(NORTH, Bedroom, Cave);
 
 	// -- ITEMS --
 
 	Item* Key = new Item("Key", "It might open a closed door.", HidedRoom);
+	Item* Bagpack = new Item("Bagpack", "You can use it to store other items", Tent, 4);
 
 	// -- PLAYER --
 

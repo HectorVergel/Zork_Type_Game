@@ -11,13 +11,15 @@ public:
 	virtual ~Entity();
 	virtual void Update() = 0;
 	virtual void Describe() const;
+	virtual bool IsStorage() const;
 
 	std::string GetName() const;
-	void Add(Entity* aEntity);
-	void Remove(Entity* aEntity);
+	virtual bool Add(Entity* aEntity);
+	virtual bool Remove(Entity* aEntity);
 	Entity* Find(const std::string& aEntityName);
 	void SetParent(Entity* aParent);
 	Entity* GetParent();
+	std::list<Entity*> GetContains();
 
 
 protected:

@@ -2,11 +2,23 @@
 #include "Player.h"
 #include "Exit.h"
 
-bool Player::HasKey()
+bool Player::HasKey(const std::list<Entity*>& aContainer)
 {
-	auto Iterator = std::find_if(mContains.begin(), mContains.end(), [](Entity* Entity) { return Entity->GetName().compare("key"); });
-	bool HasKey = Iterator != mContains.end();
-	return HasKey;
+	for(const auto& Object : aContainer)
+	{
+		if(Object->IsStorage())
+		{
+			return HasKey(Object->GetContains());
+		}
+		else
+		{
+			if (Object->GetName() == "Key")
+			{
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
 Player::Player(const std::string& aName, const std::string& aDescription, Room* aStartingRoom) :
@@ -63,7 +75,7 @@ void Player::Move(std::string& aDirection)
 		return;
 	}
 
-	if (Exit->GetDestination()->GetIsLocked() && !HasKey())
+	if (Exit->GetDestination()->GetIsLocked() && !HasKey(mContains))
 	{
 		std::cout << "You can't go that way, it's locked. Find a key." << std::endl;
 		return;
@@ -99,6 +111,37 @@ void Player::Take(std::string& aItemName)
 	Add(Item);
 
 	std::cout << "You picked up " << Item->GetName() << std::endl;
+}
+
+void Player::Store(std::string& aItemToStore, std::string& aItemStorage)
+{
+	Entity* ItemToStore = Find(aItemToStore);
+	
+	if(ItemToStore == nullptr)
+	{
+		std::cout << "You don't have that item to store." << std::endl;
+		return;
+	}
+
+	Entity* ItemStorage = Find(aItemStorage);
+
+	if(ItemStorage == nullptr)
+	{
+		std::cout << "You don't have that item as an storage" << std::endl;
+		return;
+	}
+
+	Remove(ItemToStore);
+
+	if(ItemStorage->Add(ItemToStore))
+	{
+		std::cout << "You stored " << ItemToStore->GetName() << " in " << ItemStorage->GetName() << std::endl;
+	}
+	else
+	{
+		std::cout << "You stored don't have enough space in " << ItemStorage->GetName() << std::endl;
+	}
+	
 }
 
 Room* Player::GetCurrentRoom() const

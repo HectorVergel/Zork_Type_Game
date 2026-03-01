@@ -75,6 +75,22 @@ void Game::ProcessCommand(const std::string& aInput)
         else
             mWorld->GetPlayer()->Drop(Item);
     }
+    else if (Command == "store")
+    {
+        std::string ItemName;
+        std::string ContainerName;
+
+        Iss >> ItemName >> ContainerName;
+
+        if (ItemName.empty() || ContainerName.empty())
+        {
+            std::cout << "Usage: store (item) (container)\n";
+        }
+        else
+        {
+            mWorld->GetPlayer()->Store(ItemName, ContainerName);
+        }
+    }
     else if (Command == "help")
     {
         PrintHelp();
