@@ -16,6 +16,12 @@ This project is licensed under the **MIT License**. See the `LICENSE` file in th
 
 ## 🎮 Gameplay Guide
 
+### ⚠️ Important: Case Sensitivity
+The game parser is **case-sensitive**. Please follow these naming conventions:
+* **Commands:** Must be in **lowercase** (e.g., `look`, `go`).
+* **Directions:** Must be in **lowercase** (e.g., `north`, `south`, `east`, `west`).
+* **Items & NPCs:** Must start with a **Capital Letter** (e.g., `Key`, `Amulet`, `Backpack`, `Gardener`).
+
 ### Available Commands
 Use the following commands in the console to interact with the world (you can also type help to get these commands):
 
