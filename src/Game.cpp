@@ -115,9 +115,11 @@ void Game::ProcessCommand(const std::string& aInput)
 void Game::PrintHelp()
 {
     std::cout << "You can use the following commands: " << std::endl;
-    std::cout << "'look' command for investigating \n" << 
-        "'go (direction)' for moving \n" << 
-        "'take (item name)' for taking items \n" << 
-        "'drop (item name)' for dropping items \n" << 
-        "'quit' fot finishing the game";
+    std::cout << "'look' command for investigating \n" <<
+        "'go (direction)' for moving \n" <<
+        "'take (item name)' for taking items \n" <<
+        "'drop (item name)' for dropping items \n" <<
+        "'quit' fot finishing the game \n" <<
+        "'store (item) (storage)' for storing items \n" <<
+        "'talk (name)' to talk with NPC's" << std::endl;
 }
