@@ -37,17 +37,8 @@ Use the following commands in the console to interact with the world (you can al
 
 ### Map
 
-[TENT]
-  |
-(NORTH)
-   |
-[CAMP] <---(WEST)--- [FOREST] ---(EAST)---> [CAVE] ---(EAST)---> [HIDEDROOM]
-                      (START)                  |                  (ITEM: KEY)
-                                               |
-                                             (SOUTH)
-                                               |
-                                            [BEDROOM]
-                                         (ITEM: AMULET)
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/9b3a6b81-1d86-4578-8f46-c0249d745ab3" />
+
 
 ---
 
