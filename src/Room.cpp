@@ -1,31 +1,57 @@
 #include "Room.h"
 #include <iostream>
 
-Room::Room(const std::string& aName, const std::string& aDescription) : 
-	Entity(aName, aDescription, nullptr)
+Room::Room(const std::string& aName, const std::string& aDescription, const bool aLocked) : 
+	Entity(aName, aDescription, nullptr),
+	mLocked(aLocked)
 {
-	mType = ROOM;
 }
 
-void Room::Look()
+void Room::Update()
+{
+}
+
+void Room::Describe() const
 {
 	std::cout << mName << std::endl;
 	std::cout << mDescription << std::endl;
-	
+}
+
+void Room::Look()
+{	
 	std::cout << "From this room you can see: " << std::endl;
 
-	for(const auto& Exit : mExits)
+	if (!mExits.empty())
 	{
-		std::cout << Exit->GetDestination()->GetName() + " at " + Exit->GetDirectionAsString();
+		std::cout << "\nExits:\n";
+		for (const auto& Exit : mExits)
+		{
+			std::cout << " - " << Exit->GetDirectionAsString() << std::endl;
+		}
 	}
-	
-	for(const auto& Object : mContains)
+
+	if(!mContains.empty())
 	{
-		Object->DescribeInRoom();
+		for (const auto& Object : mContains)
+		{
+			Object->Describe();
+		}
 	}
 }
 
 Exit* Room::GetExit(const std::string& aDirection)
 {
-	return nullptr;
+	for(const auto& Exit : mExits)
+	{
+		const std::string ExitDirectionName = Exit->GetDirectionAsString();
+		if(ExitDirectionName.compare(aDirection) == 0) 
+		{
+			return Exit;
+		}
+	}
+}
+
+void Room::AddExit(Exit* aExit)
+{
+	mExits.push_back(aExit);
 }

@@ -20,11 +20,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Entity.cpp" />
+    <ClCompile Include="..\src\Exit.cpp" />
+    <ClCompile Include="..\src\Room.cpp" />
     <ClCompile Include="..\src\Utils.h" />
+    <ClCompile Include="..\src\World.cpp" />
     <ClCompile Include="..\src\Zork_Type_Game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Entity.h" />
+    <ClInclude Include="..\src\Exit.h" />
+    <ClInclude Include="..\src\Room.h" />
     <ClInclude Include="..\src\World.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

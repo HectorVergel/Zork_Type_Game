@@ -11,7 +11,6 @@ Entity::Entity(const std::string& aName, const std::string& aDescription, Entity
 		mParent->mContains.push_back(this);
 	}
 
-	mType = ENTITY;
 }
 
 Entity::~Entity()
@@ -19,12 +18,45 @@ Entity::~Entity()
 	SAFE_DELETE_VECTOR(mContains);
 }
 
+void Entity::Describe() const
+{
+}
+
 const std::string Entity::GetName()
 {
 	return mName;
 }
 
-const EntityType Entity::GetType()
+void Entity::Add(Entity* aEntity)
 {
-	return mType;
+	if(aEntity == nullptr)
+	{
+		return;
+	}
+	mContains.push_back(aEntity);
+	aEntity->SetParent(this);
+}
+
+void Entity::Remove(Entity* aEntity)
+{
+	if(aEntity == nullptr)
+	{
+		return;
+	}
+	auto Iterator = std::find(mContains.begin(), mContains.end(), aEntity);
+	if(Iterator != mContains.end())
+	{
+		mContains.erase(Iterator);
+		aEntity->SetParent(nullptr);
+	}
+}
+
+void Entity::SetParent(Entity* aParent)
+{
+	mParent = aParent;
+}
+
+Entity* Entity::GetParent()
+{
+	return mParent;
 }
