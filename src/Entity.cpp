@@ -22,7 +22,7 @@ void Entity::Describe() const
 {
 }
 
-const std::string Entity::GetName()
+std::string Entity::GetName() const
 {
 	return mName;
 }

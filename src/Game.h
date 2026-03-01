@@ -17,7 +17,6 @@ private:
 	void PrintHelp();
 
 	World* mWorld;
-	Player* mPlayer;
 	bool mRunning;
 };
 

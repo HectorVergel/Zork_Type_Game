@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Room.h"
 #include "Utils.h"
+#include "Exit.h"
 
 Room::Room(const std::string& aName, const std::string& aDescription, const bool aLocked) : 
 	Entity(aName, aDescription, nullptr),
@@ -25,7 +26,7 @@ void Room::Describe() const
 
 void Room::Look()
 {	
-	std::cout << "From this room you can see: " << std::endl;
+	Describe();
 
 	if (!mExits.empty())
 	{
@@ -38,6 +39,7 @@ void Room::Look()
 
 	if(!mContains.empty())
 	{
+		std::cout << "From this room you can see: " << std::endl;
 		for (const auto& Object : mContains)
 		{
 			Object->Describe();
@@ -55,9 +57,20 @@ Exit* Room::GetExit(const std::string& aDirection)
 			return Exit;
 		}
 	}
+	return nullptr;
 }
 
 void Room::AddExit(Exit* aExit)
 {
 	mExits.push_back(aExit);
+}
+
+bool Room::GetIsLocked()
+{
+	return mLocked;
+}
+
+void Room::SetIsLocked(const bool aLocked)
+{
+	mLocked = aLocked;
 }

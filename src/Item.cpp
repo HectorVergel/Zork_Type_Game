@@ -12,5 +12,6 @@ void Item::Update()
 
 void Item::Describe() const
 {
-	std::cout << "There is an item here: " << mName << std::endl;
+	std::cout << "Item: " << mName << std::endl;
+	std::cout << mDescription << std::endl;
 }

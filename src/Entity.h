@@ -12,7 +12,7 @@ public:
 	virtual void Update() = 0;
 	virtual void Describe() const;
 
-	const std::string GetName();
+	std::string GetName() const;
 	void Add(Entity* aEntity);
 	void Remove(Entity* aEntity);
 	Entity* Find(const std::string& aEntityName);

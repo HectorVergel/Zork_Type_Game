@@ -5,9 +5,9 @@
 
 Game::Game() :
 	mWorld(nullptr),
-	mPlayer(nullptr),
 	mRunning(true)
 {
+    mWorld = new World();
 }
 
 Game::~Game()
@@ -20,7 +20,7 @@ void Game::Run()
 	std::cout << "Welcome to my Zork! game implementation!" << std::endl;
 	std::cout << "Type 'help' for commands." << std::endl;
 
-	mPlayer->Look();
+    mWorld->GetPlayer()->Look();
 
 	while(mRunning)
 	{
@@ -30,7 +30,7 @@ void Game::Run()
 		std::getline(std::cin, Input);
 
 		ProcessCommand(Input);
-		mPlayer->Update();
+        mWorld->GetPlayer()->Update();
 	}
 }
 
@@ -43,7 +43,7 @@ void Game::ProcessCommand(const std::string& aInput)
 
     if (Command == "look")
     {
-        mPlayer->Look();
+        mWorld->GetPlayer()->Look();
     }
     else if (Command == "go")
     {
@@ -53,7 +53,7 @@ void Game::ProcessCommand(const std::string& aInput)
         if (Direction.empty())
             std::cout << "Go where?\n";
         else
-            mPlayer->Move(Direction);
+            mWorld->GetPlayer()->Move(Direction);
     }
     else if (Command == "take")
     {
@@ -63,7 +63,7 @@ void Game::ProcessCommand(const std::string& aInput)
         if (Item.empty())
             std::cout << "Take what?\n";
         else
-            mPlayer->Take(Item);
+            mWorld->GetPlayer()->Take(Item);
     }
     else if (Command == "drop")
     {
@@ -73,7 +73,7 @@ void Game::ProcessCommand(const std::string& aInput)
         if (Item.empty())
             std::cout << "Drop what?\n";
         else
-            mPlayer->Drop(Item);
+            mWorld->GetPlayer()->Drop(Item);
     }
     else if (Command == "help")
     {

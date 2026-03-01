@@ -1,6 +1,7 @@
 #include <iostream>
-
+#include "Game.h"
 int main()
 {
-    std::cout << "Hello World!\n";
+	Game* ZorkGame = new Game();
+	ZorkGame->Run();
 }

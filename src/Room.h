@@ -3,7 +3,8 @@
 
 #include "Entity.h"
 #include <string>
-#include "Exit.h"
+
+class Exit;
 
 class Room : public Entity
 {
@@ -17,6 +18,9 @@ public:
 	void Look();
 	Exit* GetExit(const std::string& aDirection);
 	void AddExit(Exit* aExit);
+
+	bool GetIsLocked();
+	void SetIsLocked(const bool aLocked);
 
 private:
 	std::list<Exit*> mExits;

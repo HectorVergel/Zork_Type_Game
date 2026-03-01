@@ -1,7 +1,15 @@
 #include <iostream>
 #include "Player.h"
+#include "Exit.h"
 
-Player::Player(const std::string& aName, const std::string& aDescription, Room* aStartingRoom) : 
+bool Player::HasKey()
+{
+	auto Iterator = std::find_if(mContains.begin(), mContains.end(), [](Entity* Entity) { return Entity->GetName().compare("key"); });
+	bool HasKey = Iterator != mContains.end();
+	return HasKey;
+}
+
+Player::Player(const std::string& aName, const std::string& aDescription, Room* aStartingRoom) :
 	Entity(aName, aDescription, aStartingRoom)
 {
 }
@@ -52,6 +60,12 @@ void Player::Move(std::string& aDirection)
 	if (Exit == nullptr) 
 	{
 		std::cout << "You can't go that way." << std::endl;
+		return;
+	}
+
+	if (Exit->GetDestination()->GetIsLocked() && !HasKey())
+	{
+		std::cout << "You can't go that way, it's locked. Find a key." << std::endl;
 		return;
 	}
 

@@ -5,6 +5,7 @@
 World::World() : 
 	mPlayer(nullptr)
 {
+	CreateWorld();
 }
 
 World::~World()
@@ -43,10 +44,19 @@ void World::CreateWorld()
 	Exit* ForestToCamp = new Exit(WEST, Forest, Camp);
 	Exit* ForestToCave = new Exit(EAST, Forest, Cave);
 	Exit* CampToTent = new Exit(NORTH, Camp, Tent);
+	Exit* CampToForest = new Exit(EAST, Camp, Forest);
+	Exit* TentToCamp = new Exit(SOUTH, Tent, Camp);
 	Exit* CaveToHidedRoom = new Exit(EAST, Cave, HidedRoom);
 	Exit* CaveToBedroom = new Exit(SOUTH, Cave, Bedroom);
+	Exit* CaveToForest = new Exit(WEST, Cave, Forest);
+	Exit* HidedRoomToCave = new Exit(WEST, HidedRoom, Cave);
+
+	// -- ITEMS --
+
+	Item* Key = new Item("Key", "It might open a closed door.", HidedRoom);
 
 	// -- PLAYER --
+
 	mPlayer = new Player("Hector", "A brave adventurer", Forest);
 
 }

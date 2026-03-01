@@ -20,23 +20,24 @@ std::string Exit::GetDirectionAsString() const
 	switch (mDirection)
 	{
 	case NORTH:
-		Direction = "North";
+		Direction = "north";
 		break;
 
 	case SOUTH:
-		Direction = "South";
+		Direction = "south";
 
 		break;
 	case WEST:
-		Direction = "West";
+		Direction = "west";
 
 		break;
 	case EAST:
-		Direction = "East";
+		Direction = "east";
 
 		break;
 	default:
 		break;
 	}
 
+	return Direction;
 }

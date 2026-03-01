@@ -8,6 +8,9 @@
 
 class Player : public Entity
 {
+private:
+	bool HasKey();
+
 public:
 	Player(const std::string& aName, const std::string& aDescription, Room* aStartingRoom);
 

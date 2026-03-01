@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClCompile Include="..\src\Entity.cpp" />
     <ClCompile Include="..\src\Exit.cpp" />
+    <ClCompile Include="..\src\Game.cpp" />
+    <ClCompile Include="..\src\Item.cpp" />
+    <ClCompile Include="..\src\Player.cpp" />
     <ClCompile Include="..\src\Room.cpp" />
     <ClCompile Include="..\src\Utils.h" />
     <ClCompile Include="..\src\World.cpp" />
@@ -29,6 +32,9 @@
   <ItemGroup>
     <ClInclude Include="..\src\Entity.h" />
     <ClInclude Include="..\src\Exit.h" />
+    <ClInclude Include="..\src\Game.h" />
+    <ClInclude Include="..\src\Item.h" />
+    <ClInclude Include="..\src\Player.h" />
     <ClInclude Include="..\src\Room.h" />
     <ClInclude Include="..\src\World.h" />
   </ItemGroup>
