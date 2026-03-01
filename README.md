@@ -35,6 +35,20 @@ Use the following commands in the console to interact with the world (you can al
 | `talk (name)` | Initiate a conversation with a Non-Player Character (NPC). |
 | `quit` | Save your progress (if applicable) and exit the game. |
 
+### Map
+
+[TENT]
+  |
+(NORTH)
+   |
+[CAMP] <---(WEST)--- [FOREST] ---(EAST)---> [CAVE] ---(EAST)---> [HIDEDROOM]
+                      (START)                  |                  (ITEM: KEY)
+                                               |
+                                             (SOUTH)
+                                               |
+                                            [BEDROOM]
+                                         (ITEM: AMULET)
+
 ---
 
 ## 🏆 How to Finish the Game (Walkthrough)
