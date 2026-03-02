@@ -18,7 +18,7 @@ public:
 	Exit* GetExit(const std::string& aDirection);
 	void AddExit(Exit* aExit);
 
-	bool GetIsLocked();
+	bool GetIsLocked() const;
 	void SetIsLocked(const bool aLocked);
 
 private:

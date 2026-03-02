@@ -1,8 +1,2 @@
-﻿  Game.cpp
-  NPC.cpp
-C:\Repos\Zork_Type_Game\src\NPC.cpp(38,18): warning C4018: '>=': no coinciden signed/unsigned
-  Player.cpp
-  World.cpp
-  Zork_Type_Game.cpp
-  Generando código...
+﻿  Entity.cpp
   Zork_Type_Game.vcxproj -> C:\Repos\Zork_Type_Game\bin\Debug\Zork_Type_Game.exe

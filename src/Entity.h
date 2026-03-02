@@ -17,8 +17,8 @@ public:
 	virtual bool Remove(Entity* aEntity);
 	Entity* Find(const std::string& aEntityName);
 	void SetParent(Entity* aParent);
-	Entity* GetParent();
-	std::list<Entity*> GetContains();
+	Entity* GetParent() const;
+	std::list<Entity*>& GetContains();
 
 
 protected:

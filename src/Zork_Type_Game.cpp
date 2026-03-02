@@ -2,6 +2,6 @@
 #include "Game.h"
 int main()
 {
-	Game* ZorkGame = new Game();
-	ZorkGame->Run();
+	Game ZorkGame;
+	ZorkGame.Run();
 }

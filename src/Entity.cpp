@@ -15,6 +15,12 @@ Entity::Entity(const std::string& aName, const std::string& aDescription, Entity
 
 Entity::~Entity()
 {
+	for (const auto& Child : mContains) {
+		if (Child) {
+			Child->mParent = nullptr;
+		}
+	}
+
 	SAFE_DELETE_VECTOR(mContains);
 }
 
@@ -76,12 +82,12 @@ void Entity::SetParent(Entity* aParent)
 	mParent = aParent;
 }
 
-Entity* Entity::GetParent()
+Entity* Entity::GetParent() const
 {
 	return mParent;
 }
 
-std::list<Entity*> Entity::GetContains()
+std::list<Entity*>& Entity::GetContains()
 {
 	return mContains;
 }

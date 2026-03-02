@@ -11,7 +11,6 @@ World::World() :
 World::~World()
 {
 	SAFE_DELETE_VECTOR(mRooms);
-	SAFE_DELETE(mPlayer);
 }
 
 Player* World::GetPlayer()
@@ -37,6 +36,7 @@ void World::CreateWorld()
 	mRooms.push_back(HidedRoom);
 	mRooms.push_back(Camp);
 	mRooms.push_back(Tent);
+	mRooms.push_back(Bedroom);
 
 
 	// -- EXITS --

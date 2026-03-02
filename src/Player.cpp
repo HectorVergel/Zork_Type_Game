@@ -9,7 +9,15 @@ bool Player::HasItem(const std::list<Entity*>& aContainer, const std::string& aI
 	{
 		if (Object->IsStorage())
 		{
-			return HasItem(Object->GetContains(), aItem);
+			bool FoundItem = HasItem(Object->GetContains(), aItem);
+			if(!FoundItem)
+			{
+				continue;
+			}
+			else
+			{
+				return FoundItem;
+			}
 		}
 		else
 		{
@@ -39,7 +47,7 @@ void Player::Look()
 	}
 }
 
-void Player::Drop(std::string& aItemName)
+void Player::Drop(const std::string& aItemName)
 {
 	Entity* Item = Find(aItemName);
 
@@ -55,7 +63,7 @@ void Player::Drop(std::string& aItemName)
 	std::cout << "You dropped " << Item->GetName() << std::endl;
 }
 
-void Player::Move(std::string& aDirection)
+void Player::Move(const std::string& aDirection)
 {
 	Room* CurrentRoom = GetCurrentRoom();
 
@@ -92,7 +100,7 @@ void Player::Move(std::string& aDirection)
 	Destination->Look();
 }
 
-void Player::Take(std::string& aItemName)
+void Player::Take(const std::string& aItemName)
 {
 	Room* Room = GetCurrentRoom();
 
@@ -110,7 +118,7 @@ void Player::Take(std::string& aItemName)
 	std::cout << "You picked up " << Item->GetName() << std::endl;
 }
 
-void Player::Store(std::string& aItemToStore, std::string& aItemStorage)
+void Player::Store(const std::string& aItemToStore, const std::string& aItemStorage)
 {
 	Entity* ItemToStore = Find(aItemToStore);
 	
@@ -141,7 +149,7 @@ void Player::Store(std::string& aItemToStore, std::string& aItemStorage)
 	
 }
 
-void Player::Talk(std::string& aName)
+void Player::Talk(const std::string& aName)
 {
 	Room* CurrentRoom = GetCurrentRoom();
 
@@ -150,7 +158,7 @@ void Player::Talk(std::string& aName)
 		return;
 	}
 
-	NPC* CharacterNPC = static_cast<NPC*>(CurrentRoom->Find(aName));
+	NPC* CharacterNPC = dynamic_cast<NPC*>(CurrentRoom->Find(aName));
 
 	if(CharacterNPC == nullptr)
 	{

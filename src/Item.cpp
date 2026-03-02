@@ -4,7 +4,8 @@
 
 Item::Item(const std::string& aName, const std::string& aDescription, Entity* aParent, const int aItemStorageSlots) :
 	Entity(aName, aDescription, aParent),
-	mStorageSlots(aItemStorageSlots)
+	mStorageSlots(aItemStorageSlots),
+	mCurrentUsedSlots(0)
 {
 }
 

@@ -29,9 +29,8 @@ void NPC::Dialog(const bool aIsQuestCompleted)
 	{
 		mDialogIndex = 0;
 	}
-	std::vector<std::string> CurrentDialog;
-	
-	CurrentDialog = aIsQuestCompleted ? mDialogsCompleted : mDialogsNoCompleted;
+
+	std::vector<std::string>& CurrentDialog = aIsQuestCompleted ? mDialogsCompleted : mDialogsNoCompleted;
 	std::cout << CurrentDialog[mDialogIndex] << std::endl;
 	mDialogIndex++;
 
@@ -45,5 +44,11 @@ void NPC::Dialog(const bool aIsQuestCompleted)
 
 std::string NPC::GetQuestItem() const
 {
-	return mQuestItem->GetName();
+	if(mQuestItem != nullptr)
+	{
+		return mQuestItem->GetName();
+	}
+
+	return "";
 }
+	

@@ -15,11 +15,11 @@ public:
 	void Describe() const override;
 
 	void Look();
-	void Drop(std::string& aItemName);
-	void Move(std::string& aDirection);
-	void Take(std::string& aItemName);
-	void Store(std::string& aItemToStore, std::string& aItemStorage);
-	void Talk(std::string& aName);
+	void Drop(const std::string& aItemName);
+	void Move(const std::string& aDirection);
+	void Take(const std::string& aItemName);
+	void Store(const std::string& aItemToStore, const std::string& aItemStorage);
+	void Talk(const std::string& aName);
 
 	Room* GetCurrentRoom() const;
 

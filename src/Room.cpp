@@ -61,7 +61,7 @@ void Room::AddExit(Exit* aExit)
 	mExits.push_back(aExit);
 }
 
-bool Room::GetIsLocked()
+bool Room::GetIsLocked() const
 {
 	return mLocked;
 }
